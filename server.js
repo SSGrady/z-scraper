@@ -8,10 +8,18 @@ const app = express();
 
 const PORT = 3001;
 
+app.get('/', async (req, res) => {
+    const city = req.query.city || 'seattle-wa/fremont';
+    maxRent = req.query.maxRent || '1950';
+    const url = `https://www.zumperrentals.com/apartments-for-rent/${city}/under-${maxRent}`;
+    try {
+        res.json({url});
+    } catch (error) {
+        console.error('Error: ', error);
+        res.status(500).json({error: "An error has occured"});
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Running on ${PORT}`);
 })
-
-app.get('/api/listings', async (req, res) => {
-    res.json({ message: 'This is working!' });
-});
