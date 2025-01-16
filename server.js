@@ -13,8 +13,8 @@ app.get('/', async (req, res) => {
     const city = req.query.city || 'seattle-wa/fremont';
     maxRent = req.query.maxRent || '1950';
     const url = `https://www.zumperrentals.com/apartments-for-rent/${city}/under-${maxRent}`;
-    const listings = await scrapeZumperSearch(url);
     try {
+        const listings = await scrapeZumperSearch(url);
         res.json(listings);
     } catch (error) {
         console.error('Error: ', error);
