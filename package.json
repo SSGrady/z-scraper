@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/SSGrady/z-scraper/issues"
   },
-  "homepage": "https://github.com/SSGrady/z-scraper#readme"
+  "homepage": "https://github.com/SSGrady/z-scraper#readme",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "express": "^4.21.2"
+  }
 }
