@@ -3,6 +3,7 @@
 
 // server.js
 const express = require('express');
+const { scrapeZumperSearch } = require('./scraper');
 
 const app = express();
 
@@ -12,8 +13,9 @@ app.get('/', async (req, res) => {
     const city = req.query.city || 'seattle-wa/fremont';
     maxRent = req.query.maxRent || '1950';
     const url = `https://www.zumperrentals.com/apartments-for-rent/${city}/under-${maxRent}`;
+    const listings = await scrapeZumperSearch(url);
     try {
-        res.json({url});
+        res.json(listings);
     } catch (error) {
         console.error('Error: ', error);
         res.status(500).json({error: "An error has occured"});
